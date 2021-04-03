@@ -1,10 +1,10 @@
 body {
   color:#333333;
-  font-family: arial;
+  font: 120%/1.6 Roboto;
   max-width: 650px;
   margin: 0 auto;
   padding: 0 16px;
-
+  --header-bg: #2c6733;
   display: flex;
   flex-direction: column;
 min-height: 100vh;
@@ -12,30 +12,43 @@ min-height: 100vh;
 }
 
 .main-content {
-    flex-grow: 1;
+    display: grid;
+  /* off center! */
+  grid-template-columns: 4rem 1fr 8rem;
+  grid-template-rows: auto 8em 1fr auto;
 }
+
+.body-content {
+   
+        flex-direction: row;
+      }
 
 footer {
   color: #888888;
   border-top: 1px solid #eeeeee;
   margin-top: 16px;
-  padding: 16px 0;
- 
+
+  padding: 2rem;
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
 
 }
 
 header {
-    margin-top: 16px;
-    margin-bottom: 48px;
+    background: var(--header-bg);
+    color: white;
+    padding: 2rem 4rem;
+    grid-column: 1 / -1;
 }
 
 h1 {
     font-size: 64px;
     margin-bottom: 16px;
+    color: white;
 }
 
 header a {
-color: #888888;
+color: white;
 margin-right: 16px;
 text-decoration: none;
 }
@@ -51,8 +64,44 @@ input {
 
 button {
     cursor: pointer;
-    bord3r: 1px solid #888888;
+    border: 1px solid #888888;
     background: #888888;
     color: white;
     padding: 8px;
 }
+@media (max-width: 700px) {
+    .page-wrap {
+      grid-template-columns: 10px 1fr 10px;
+    }
+    header {
+      padding: 1rem;
+    }
+  }
+  @supports (grid-template-columns: subgrid) {
+    header {
+      display: grid;
+      grid-template-columns: subgrid;
+      padding: 2rem 0;
+    }
+    header h1 {
+      grid-column: 2 / 3;
+    }
+  }
+  .main-content::after {
+    content: "";
+    background: var(--header-bg);
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+  }
+  main {
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+    grid-column: 2 / 3;
+    grid-row: 2 / 4;
+    position: relative;
+  }
+  main p {
+    max-width: 700px;
+  }

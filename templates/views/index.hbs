@@ -10,16 +10,25 @@
     <body>
         <div class="main-content">
               {{>header}}
-            <p>
-                use this site to get your weather
-            </p>
-            <form>
+               <main>
+  
+  <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+    <blockquote>
+      <p class="text-lg font-semibold">
+       USE THIS SITE TO GET YOUR WEATHER!
+      </p>
+      <form>
                 <input placeholder="Location"/>
                 <button>search</button>
             </form>
            
             <p id="message-1"></p>
             <p id="message-2"></p>
+    </blockquote>
+    
+  </div>
+</main>
+           
         </div>
       
         {{>footer}}
